@@ -3,6 +3,12 @@ import { connectDB } from "./db.js";
 import todoList from "./routes/todoList/todoList.js";
 import userList from "./routes/userList/userList.js";
 
+const port = process.env.PORT || 8080; // Use the provided PORT environment variable or default to 8080
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 connectDB(); // connect to database
 
 const app = express();
@@ -16,6 +22,6 @@ app.get("/", (req, res) => {
   res.json("success");
 });
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("server run");
 });
