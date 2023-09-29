@@ -6,6 +6,14 @@ import {
   validatePassword,
 } from "../../utils/passwordHelper/passwordHelper.js";
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const userList = await UserList.find({});
+    res.send(userList);
+  } catch (error) {
+    res.status(404).send({ error: error.message });
+  }
+};
 export const createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
