@@ -8,7 +8,8 @@ import {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const userList = await UserList.find({});
+    const userList = await UserList.find({}).select("-password");
+
     res.send(userList);
   } catch (error) {
     res.status(404).send({ error: error.message });
